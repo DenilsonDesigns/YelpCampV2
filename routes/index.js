@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
 
 //SHOW REGISTER FORM
 router.get("/register", (req, res) => {
-  res.render("register");
+  res.render("register", { page: "register" });
 });
 
 //SIGN UP LOGIC
@@ -32,7 +32,7 @@ router.post("/register", (req, res) => {
 
 //SHOW login form
 router.get("/login", (req, res) => {
-  res.render("login");
+  res.render("login", { page: "login" });
 });
 
 //handling login logic

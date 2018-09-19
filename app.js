@@ -16,8 +16,9 @@ const commentRoutes = require("./routes/comments");
 const campgroundRoutes = require("./routes/campgrounds");
 const indexRoutes = require("./routes/index");
 
+const localDB = "mongodb://localhost/yelp_camp";
 // mongoose.connect("mongodb://localhost/yelp_camp");
-mongoose.connect(process.env.DATABASEURL);
+mongoose.connect(process.env.DATABASEURL || localDB);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -27,6 +28,8 @@ app.use(flash());
 //Function to seed db on boot
 // seedDB();
 
+//moment require
+app.locals.moment = require("moment");
 //passport config
 app.use(
   require("express-session")({
